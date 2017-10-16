@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>Pagato for Zendesk</title>
+	</head>
+	<body style="margin:0px;padding:0px;max-height:480px;overflow-y:hidden;">
+		<img src="loading.svg" alt="Loading" id="pagato-loader" style="position:absolute;left:50%;margin-left:-19px">		
+		<iframe src="about:blank" width="100%" height="480" style="border:none;overflow:hidden;margin:0px;padding:0px;display:none;" scrolling="no" id="pagato-frame"></iframe>
+		<script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+	  <script>
+		    var client = ZAFClient.init();
+				client.get('ticket.requester').then(function(data) {
+					var iframe = document.getElementById('pagato-frame');
+					iframe.onload = function() { 
+						document.getElementById('pagato-loader').style.display = 'none';
+						iframe.style.display = "inline";
+					};
+					if (data['ticket.requester']['email']) {
+						iframe.src = 'https://app.pagato.com/ext/customers/e/' + btoa(data['ticket.requester']['email']) + '?partner=zendesk_chat';
+					} else {
+						iframe.src = 'https://app.pagato.com/ext?partner=zendesk_chat';
+					}
+					client.invoke('resize', { height: '480px' });
+				});
+	  </script>		
+	</body>
+</html>
