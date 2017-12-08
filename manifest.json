@@ -1,12 +1,12 @@
 {
   "name": "Pagato",
   "author": {
-    "name": "Pagato, Inc.",
+    "name": "Pagato",
     "email": "support@pagato.com",
     "url": "https://pagato.com"
   },
   "defaultLocale": "en",
-  "private": true,
+  "private": false,
   "location": {
     "support": {
       "ticket_sidebar": "assets/support_iframe.html",
@@ -16,6 +16,7 @@
       "chat_sidebar": "assets/chat_iframe.html"
     }
   },
-  "version": "1.0",
+	"domainWhitelist": ["app.pagato.com"],
+  "version": "1.0.0",
   "frameworkVersion": "2.0"
 }
