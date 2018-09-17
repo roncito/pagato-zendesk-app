@@ -17,6 +17,6 @@
     }
   },
 	"domainWhitelist": ["app.pagato.com"],
-  "version": "1.0.5",
+  "version": "1.0.6",
   "frameworkVersion": "2.0"
 }
